@@ -5,6 +5,9 @@ const uploadRouter = require('./routes/upload');
 const foodRouter = require('./routes/food');
 const userRouter = require('./routes/user');
 const contactRouter= require('./routes/contact');
+//swagger
+const swaggerJSDoc = require('swagger-jsdoc');
+const swaggerUI = require('swagger-ui-express');
 
 const dotenv = require('dotenv');
 
@@ -14,6 +17,35 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 
+//swagger start
+
+var swaggerDefinition = {
+  info: {
+      title: 'CafeMandu API',
+      description: 'Signup,Login and delete user using token and swagger documentation',
+      version: '1.0.0'
+  },
+  securityDefinitions: {
+      bearerAuth: {
+          type: 'apiKey',
+          name: 'authorization',
+          in: 'header',
+          scheme: 'bearer',
+      }
+  },
+  host: 'localhost:3000',
+  basePath: '/'
+};
+
+var swaggerOptions = {
+  swaggerDefinition,
+  apis: ['./routes/*.js']
+};
+
+var swaggerSpecs = swaggerJSDoc(swaggerOptions);
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpecs));
+
+//swagger end
 
 mongoose.connect(process.env.URL, {
     useNewUrlParser: true,
