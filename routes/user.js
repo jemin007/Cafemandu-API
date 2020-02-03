@@ -80,7 +80,7 @@ router.get('/me', auth.verifyUser, (req, res, next) => {
  * /signup:
  *  post:
  *   tags:
- *    - Item
+ *    - User
  *   description: Posting product testing
  *   produces:
  *    - application/json
@@ -113,11 +113,11 @@ router.get('/me', auth.verifyUser, (req, res, next) => {
  *      description: Please provide item image
  *   responses:
  *    201:
- *     description: item registered successfully
+ *     description: user registered successfully
  *    406:
- *     description: item name is required or item description is required
+ *     description: user name is required or user description is required
  *    409:
- *     description: item already exist
+ *     description: user already exist
  */
 
 /**
@@ -125,7 +125,7 @@ router.get('/me', auth.verifyUser, (req, res, next) => {
  * /users/{id}:
  *  delete:
  *   tags:
- *    - Delete item
+ *    - User
  *   description: Delete item 
  *   produces:
  *    - application/json
@@ -142,9 +142,9 @@ router.get('/me', auth.verifyUser, (req, res, next) => {
  *    401:
  *     description: unauthorized access
  *    404:
- *     description: item not found
+ *     description: user not found
  *    200:
- *     description: item deleted successfully
+ *     description: user deleted successfully
  *    406:
  *     description: Id not provided
  */
@@ -155,7 +155,7 @@ router.get('/me', auth.verifyUser, (req, res, next) => {
  * /login:
  *  post:
  *   tags:
- *    - Item
+ *    - User
  *   description: Posting product testing
  *   produces:
  *    - application/json
@@ -172,7 +172,7 @@ router.get('/me', auth.verifyUser, (req, res, next) => {
  *      description: Please provide password
  *   responses:
  *    201:
- *     description: login successfully
+ *     description: login successfull
  *    406:
  *     description: email or password is required
  *    409:

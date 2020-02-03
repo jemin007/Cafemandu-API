@@ -77,7 +77,7 @@ router.route("/contacts/:id")
  * /contacts:
  *  get:
  *   tags:
- *    - Item
+ *    - Contact
  *   description: Contact get testing
  *   produces:
  *    - application/json
@@ -104,7 +104,7 @@ router.route("/contacts/:id")
  * /contacts/{id}:
  *  delete:
  *   tags:
- *    - Food
+ *    - Contact
  *   description: Delete contacts
  *   produces:
  *    - application/json
@@ -114,7 +114,7 @@ router.route("/contacts/:id")
  *    - name: id
  *      in: path
  *      required: true
- *      description: Food Id
+ *      description: Contact Id
  *   responses:
  *    200:
  *     description: Successfully deleted

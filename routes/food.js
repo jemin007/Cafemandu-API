@@ -75,7 +75,7 @@ router.route("/foods")
  * /foods:
  *  post:
  *   tags:
- *    - Item
+ *    - Food
  *   description: Posting product testing
  *   produces:
  *    - application/json
@@ -108,7 +108,7 @@ router.route("/foods")
  * /foods:
  *  get:
  *   tags:
- *    - Item
+ *    - Food
  *   description: Posting food testing
  *   produces:
  *    - application/json
