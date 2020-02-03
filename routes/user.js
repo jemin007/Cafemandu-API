@@ -73,4 +73,110 @@ router.get('/me', auth.verifyUser, (req, res, next) => {
           });
 });
 
+//swagger of signup
+
+/**
+ * @swagger
+ * /signup:
+ *  post:
+ *   tags:
+ *    - Item
+ *   description: Posting product testing
+ *   produces:
+ *    - application/json
+ *   consumes:
+ *    - application/x-www-form-urlencoded
+ *   parameters:
+ *    - name: fullName
+ *      in: formData
+ *      type: string
+ *      description: please provide user fullname
+ *    - name: email
+ *      in: formData
+ *      type: string
+ *      description: Please provide user email
+ *    - name: password
+ *      in: formData
+ *      type: string
+ *      description: Please provide user password
+  *    - name: phone
+ *      in: formData
+ *      type: string
+ *      description: Please provide phone
+  *    - name: address
+ *      in: formData
+ *      type: string
+ *      description: Please provide address
+ *    - name: image
+ *      in: formData
+ *      type: string
+ *      description: Please provide item image
+ *   responses:
+ *    201:
+ *     description: item registered successfully
+ *    406:
+ *     description: item name is required or item description is required
+ *    409:
+ *     description: item already exist
+ */
+
+/**
+ * @swagger
+ * /users/{id}:
+ *  delete:
+ *   tags:
+ *    - Delete item
+ *   description: Delete item 
+ *   produces:
+ *    - application/json
+ *   consumes:
+ *    - application/x-www-form-urlencoded
+ *   security:
+ *    - bearerAuth: []
+ *   parameters:
+ *    - name: id
+ *      in: path
+ *      required: true
+ *      description: please enter id
+ *   responses:
+ *    401:
+ *     description: unauthorized access
+ *    404:
+ *     description: item not found
+ *    200:
+ *     description: item deleted successfully
+ *    406:
+ *     description: Id not provided
+ */
+
+ //swagger of login
+ /**
+ * @swagger
+ * /login:
+ *  post:
+ *   tags:
+ *    - Item
+ *   description: Posting product testing
+ *   produces:
+ *    - application/json
+ *   consumes:
+ *    - application/x-www-form-urlencoded
+ *   parameters:
+ *    - name: email
+ *      in: formData
+ *      type: string
+ *      description: please provide email
+ *    - name: password
+ *      in: formData
+ *      type: string
+ *      description: Please provide password
+ *   responses:
+ *    201:
+ *     description: login successfully
+ *    406:
+ *     description: email or password is required
+ *    409:
+ *     description: user already exist
+ */
+
 module.exports = router;
