@@ -45,101 +45,84 @@ router.route("/contacts/:id")
 //swagger test
 /**
  * @swagger
- * /items:
+ * /contacts:
  *  post:
  *   tags:
- *    - Item
- *   description: Posting product testing
+ *    - Contact
+ *   description: Contact list testing
  *   produces:
  *    - application/json
  *   consumes:
  *    - application/x-www-form-urlencoded
  *   parameters:
- *    - name: name
+ *    - name: email
  *      in: formData
  *      type: string
- *      description: please provide item name
- *    - name: price
+ *      description: please provide email
+ *    - name: description
  *      in: formData
  *      type: string
- *      description: Please provide item price
- *    - name: desciption
- *      in: formData
- *      type: string
- *      description: Please provide item description
- *    - name: image
- *      in: formData
- *      type: string
- *      description: Please provide item image
+ *      description: Please provide description
  *   responses:
  *    201:
- *     description: item registered successfully
+ *     description: contact registered successfully
  *    406:
- *     description: item name is required or item description is required
+ *     description: contact email is required or contact description is required
  *    409:
- *     description: item already exist
+ *     description: contact already exist
  */
 
 /**
  * @swagger
- * /items:
+ * /contacts:
  *  get:
  *   tags:
  *    - Item
- *   description: Posting product testing
+ *   description: Contact get testing
  *   produces:
  *    - application/json
  *   consumes:
  *    - application/x-www-form-urlencoded
  *   parameters:
- *    - name: name
+ *    - name: email
  *      type: string
- *      description: please provide item name
- *    - name: price
- *      type: string
- *      description: Please provide item price
+ *      description: please provide email
  *    - name: desciption
  *      type: string
- *      description: Please provide item description
- *    - name: image
- *      type: string
- *      description: Please provide item image
+ *      description: Please provide description
  *   responses:
  *    201:
- *     description: item registered successfully
+ *     description: contact registered successfully
  *    406:
- *     description: item name is required or item description is required
+ *     description: contact email is required or contact description is required
  *    409:
- *     description: item already exist
+ *     description: contact already exist
  */
 
-/**
+ /**
  * @swagger
- * /items/{id}:
+ * /contacts/{id}:
  *  delete:
  *   tags:
- *    - Delete item
- *   description: Delete item 
+ *    - Food
+ *   description: Delete contacts
  *   produces:
  *    - application/json
- *   consumes:
- *    - application/x-www-form-urlencoded
  *   security:
  *    - bearerAuth: []
  *   parameters:
  *    - name: id
  *      in: path
  *      required: true
- *      description: please enter id
+ *      description: Food Id
  *   responses:
- *    401:
- *     description: unauthorized access
- *    404:
- *     description: item not found
  *    200:
- *     description: item deleted successfully
- *    406:
- *     description: Id not provided
+ *     description: Successfully deleted
+ *    401:
+ *     description: Bearer token error or unauthorized
+ *    500:
+ *     description: Internal server error/ token could not be verified
+ *    403:
+ *     description: Forbidden
  */
-  
 module.exports = router;

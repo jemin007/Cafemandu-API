@@ -138,28 +138,26 @@ router.route("/foods")
  * /foods/{id}:
  *  delete:
  *   tags:
- *    - Delete item
- *   description: Delete food item 
+ *    - Food
+ *   description: Delete food item
  *   produces:
  *    - application/json
- *   consumes:
- *    - application/x-www-form-urlencoded
  *   security:
  *    - bearerAuth: []
  *   parameters:
  *    - name: id
  *      in: path
  *      required: true
- *      description: please enter id
+ *      description: Food Id
  *   responses:
- *    401:
- *     description: unauthorized access
- *    404:
- *     description: item not found
  *    200:
- *     description: item deleted successfully
- *    406:
- *     description: Id not provided
+ *     description: Successfully deleted
+ *    401:
+ *     description: Bearer token error or unauthorized
+ *    500:
+ *     description: Internal server error/ token could not be verified
+ *    403:
+ *     description: Forbidden
  */
 
 module.exports = router;
