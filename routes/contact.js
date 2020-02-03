@@ -42,5 +42,104 @@ router.route("/contacts/:id")
     );
   });
 
+//swagger test
+/**
+ * @swagger
+ * /items:
+ *  post:
+ *   tags:
+ *    - Item
+ *   description: Posting product testing
+ *   produces:
+ *    - application/json
+ *   consumes:
+ *    - application/x-www-form-urlencoded
+ *   parameters:
+ *    - name: name
+ *      in: formData
+ *      type: string
+ *      description: please provide item name
+ *    - name: price
+ *      in: formData
+ *      type: string
+ *      description: Please provide item price
+ *    - name: desciption
+ *      in: formData
+ *      type: string
+ *      description: Please provide item description
+ *    - name: image
+ *      in: formData
+ *      type: string
+ *      description: Please provide item image
+ *   responses:
+ *    201:
+ *     description: item registered successfully
+ *    406:
+ *     description: item name is required or item description is required
+ *    409:
+ *     description: item already exist
+ */
+
+/**
+ * @swagger
+ * /items:
+ *  get:
+ *   tags:
+ *    - Item
+ *   description: Posting product testing
+ *   produces:
+ *    - application/json
+ *   consumes:
+ *    - application/x-www-form-urlencoded
+ *   parameters:
+ *    - name: name
+ *      type: string
+ *      description: please provide item name
+ *    - name: price
+ *      type: string
+ *      description: Please provide item price
+ *    - name: desciption
+ *      type: string
+ *      description: Please provide item description
+ *    - name: image
+ *      type: string
+ *      description: Please provide item image
+ *   responses:
+ *    201:
+ *     description: item registered successfully
+ *    406:
+ *     description: item name is required or item description is required
+ *    409:
+ *     description: item already exist
+ */
+
+/**
+ * @swagger
+ * /items/{id}:
+ *  delete:
+ *   tags:
+ *    - Delete item
+ *   description: Delete item 
+ *   produces:
+ *    - application/json
+ *   consumes:
+ *    - application/x-www-form-urlencoded
+ *   security:
+ *    - bearerAuth: []
+ *   parameters:
+ *    - name: id
+ *      in: path
+ *      required: true
+ *      description: please enter id
+ *   responses:
+ *    401:
+ *     description: unauthorized access
+ *    404:
+ *     description: item not found
+ *    200:
+ *     description: item deleted successfully
+ *    406:
+ *     description: Id not provided
+ */
   
 module.exports = router;

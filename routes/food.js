@@ -69,4 +69,97 @@ router.route("/foods")
     );
   });
 
+  //swagger test
+  /**
+ * @swagger
+ * /foods:
+ *  post:
+ *   tags:
+ *    - Item
+ *   description: Posting product testing
+ *   produces:
+ *    - application/json
+ *   consumes:
+ *    - application/x-www-form-urlencoded
+ *   parameters:
+ *    - name: name
+ *      in: formData
+ *      type: string
+ *      description: please provide item name
+ *    - name: price
+ *      in: formData
+ *      type: number
+ *      description: Please provide item price
+ *    - name: image
+ *      in: formData
+ *      type: string
+ *      description: Please provide item image
+ *   responses:
+ *    201:
+ *     description: Food registered successfully
+ *    406:
+ *     description: Food name is required or item description is required
+ *    409:
+ *     description: Food item already exist
+ */
+
+/**
+ * @swagger
+ * /foods:
+ *  get:
+ *   tags:
+ *    - Item
+ *   description: Posting food testing
+ *   produces:
+ *    - application/json
+ *   consumes:
+ *    - application/x-www-form-urlencoded
+ *   parameters:
+ *    - name: name
+ *      type: string
+ *      description: please provide food name
+ *    - name: price
+ *      type: number
+ *      description: Please provide food price
+ *    - name: image
+ *      type: string
+ *      description: Please provide food image
+ *   responses:
+ *    201:
+ *     description: item registered successfully
+ *    406:
+ *     description: item name is required or item description is required
+ *    409:
+ *     description: item already exist
+ */
+
+/**
+ * @swagger
+ * /foods/{id}:
+ *  delete:
+ *   tags:
+ *    - Delete item
+ *   description: Delete food item 
+ *   produces:
+ *    - application/json
+ *   consumes:
+ *    - application/x-www-form-urlencoded
+ *   security:
+ *    - bearerAuth: []
+ *   parameters:
+ *    - name: id
+ *      in: path
+ *      required: true
+ *      description: please enter id
+ *   responses:
+ *    401:
+ *     description: unauthorized access
+ *    404:
+ *     description: item not found
+ *    200:
+ *     description: item deleted successfully
+ *    406:
+ *     description: Id not provided
+ */
+
 module.exports = router;
