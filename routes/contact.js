@@ -32,14 +32,14 @@ description:req.body.description
 
 router.route("/contacts/:id")
   .delete(function(req,res){
-    contact.deleteOne((req.params.id,function(err){
+    contact.findOneAndDelete({_id:req.params.id},function(err){
       if(!err){
         res.send("sucessfully deleted all sucess");
       }else{
         res.send(err);
       }
     })
-    );
+    
   });
 
 //swagger test
@@ -83,13 +83,6 @@ router.route("/contacts/:id")
  *    - application/json
  *   consumes:
  *    - application/x-www-form-urlencoded
- *   parameters:
- *    - name: email
- *      type: string
- *      description: please provide email
- *    - name: desciption
- *      type: string
- *      description: Please provide description
  *   responses:
  *    201:
  *     description: contact registered successfully

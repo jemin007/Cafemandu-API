@@ -72,7 +72,12 @@ router.get('/me', auth.verifyUser, (req, res, next) => {
             image: req.user.image
           });
 });
-
+router.put('/update', auth.verifyUser, (req, res, next) => {
+    User.findByIdAndUpdate(req.user._id, { $set: req.body }, { new: true })
+        .then((user) => {
+            res.json({ _id: user._id, email: req.user.email, username: req.user.fullName, address: user.address, phone: user.phone,password:user.password});
+        }).catch(next);
+});
 //swagger of signup
 
 /**

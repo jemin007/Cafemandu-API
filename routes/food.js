@@ -43,14 +43,13 @@ router.route("/foods")
 
   router.route("/foods/:id")
   .delete(function(req,res){
-    Foods.deleteOne((req.params.id,function(err){
+    Foods.findOneAndDelete({_id:req.params.id},function(err){
       if(!err){
         res.send("Sucessfully deleted all item");
       }else{
         res.send(err);
       }
     })
-    );
   });
 
   router.route("/foods/:id")

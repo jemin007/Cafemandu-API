@@ -30,4 +30,28 @@ uploadRouter.route('/')
     });
 
 
+//swagger test
+/**
+ * @swagger
+ * /upload:
+ *  post:
+ *   tags:
+ *    - Upload image
+ *   description: upload image for food and users.
+ *   consumes:
+ *    - multipart/form-data
+ *   produces:
+ *    - application/json
+ *   parameters:
+ *    - name: imageFile
+ *      in: formData
+ *      type: file
+ *      description: Select image file to upload
+ *   responses:
+ *    200:
+ *     description: Succesfull
+ *    500:
+ *     description: You can upload only image files
+ */
+
 module.exports = uploadRouter;
