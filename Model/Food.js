@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 
 const foodSchema = {
-    name: String,
+    name:{
+        type: String,
+        required:true
+    },
     price: Number,
     image: String
 };
