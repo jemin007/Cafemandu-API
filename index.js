@@ -1,10 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+
 const uploadRouter = require('./routes/upload');
 const foodRouter = require('./routes/food');
 const userRouter = require('./routes/user');
 const contactRouter= require('./routes/contact');
+const connection = require('./connection/dbTest');
 //swagger
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUI = require('swagger-ui-express');
@@ -47,15 +48,7 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpecs));
 
 //swagger end
 
-mongoose.connect(process.env.URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true
-  })
-  .then((db) => {
-    console.log("Successfully connected to MongodB server");
-  }, (err) => console.log(err));
+
 
 app.use('/upload', uploadRouter);
 app.use('/', foodRouter);
@@ -70,6 +63,12 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`App is running at localhost:${process.env.PORT}`);
-});
+
+connection.connect()
+  .then(() =>{
+    app.listen(process.env.PORT, () => {
+      console.log(`App is running at localhost:${process.env.PORT}`);
+    });
+  })
+
+  module.exports = app;

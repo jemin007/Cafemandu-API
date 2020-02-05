@@ -113,16 +113,6 @@ router.route("/foods")
  *    - application/json
  *   consumes:
  *    - application/x-www-form-urlencoded
- *   parameters:
- *    - name: name
- *      type: string
- *      description: please provide food name
- *    - name: price
- *      type: number
- *      description: Please provide food price
- *    - name: image
- *      type: string
- *      description: Please provide food image
  *   responses:
  *    201:
  *     description: item registered successfully
@@ -159,4 +149,47 @@ router.route("/foods")
  *     description: Forbidden
  */
 
+ /**
+ * @swagger
+ * /foods/{id}:
+ *  put:
+ *   tags:
+ *    - Food
+ *   description: update food details
+ *   produces:
+ *    - application/json
+ *   consumes:
+ *    - application/json
+ *   security:
+ *    - bearerAuth: []
+ *   parameters:
+ *    - name: id
+ *      in: path
+ *      required: true
+ *      description: Food Id
+ *    - name: name
+ *      in: body
+ *      type: string
+ *      description: food details
+ *      schema:
+ *        type: object
+ *        required:
+ *          - name
+ *        properties:
+ *          name:
+ *            type: string
+ *          price:
+ *            type: string
+ *          image:
+ *            type: string
+ *   responses:
+ *    200:
+ *     description: Updated successfully
+ *    401:
+ *     description: Bearer token error or unauthorized
+ *    500:
+ *     description: Internal server error/ token could not be verified
+ *    403:
+ *     description: Forbidden
+ */
 module.exports = router;

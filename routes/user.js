@@ -23,10 +23,10 @@ router.post('/signup', (req, res, next) => {
         }).then((user) => {
             let token = jwt.sign({
                 _id: user._id
-            }, "CafemanduKey");
+            }, process.env.SECRET);
             res.json({
                 status: "Signup success!",
-                // ?token: token
+                token: token
             });
         }).catch(next);
     });
@@ -51,7 +51,7 @@ router.post('/login', (req, res, next) => {
                         }
                         let token = jwt.sign({
                             _id: user._id
-                        }, "CafemanduKey");
+                        }, process.env.SECRET);
                         res.json({
                             status: 'Login success!',
                             token: token
@@ -178,10 +178,59 @@ router.put('/update', auth.verifyUser, (req, res, next) => {
  *   responses:
  *    201:
  *     description: login successfull
+  *    404:
+ *     description: Not found
  *    406:
  *     description: email or password is required
  *    409:
  *     description: user already exist
+ */
+
+ //swagger of PUT
+ /**
+ * @swagger
+ * /update/{id}:
+ *  put:
+ *   tags:
+ *    - User
+ *   description: Update user account details
+ *   produces:
+ *    - application/json
+ *   consumes:
+ *    - application/json
+ *   security:
+ *    - bearerAuth: []
+ *   parameters:
+ *    - name: id
+ *      in: path
+ *      required: true
+ *      description: User Id
+ *    - name: email
+ *      in: body
+ *      type: string
+ *      description: User email
+ *      schema:
+ *        type: object
+ *        required:
+ *          - email
+ *        properties:
+ *          email:
+ *            type: string
+ *          fullName:
+ *            type: string
+ *          phone:
+ *            type: string
+  *          address:
+ *            type: string
+ *   responses:
+ *    200:
+ *     description: Updated successfully
+ *    401:
+ *     description: Bearer token error or unauthorized
+ *    500:
+ *     description: Internal server error/ token could not be verified
+ *    403:
+ *     description: Forbidden
  */
 
 module.exports = router;
