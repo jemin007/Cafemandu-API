@@ -6,6 +6,7 @@ const foodRouter = require('./routes/food');
 const userRouter = require('./routes/user');
 const contactRouter= require('./routes/contact');
 const connection = require('./connection/dbTest');
+const cors = require('cors');
 //swagger
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUI = require('swagger-ui-express');
@@ -17,6 +18,14 @@ dotenv.config();
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
+
+app.options('*', cors());
+let allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Headers', "*");
+    next();
+  }
+  app.use(allowCrossDomain);
 
 //swagger start
 

@@ -63,22 +63,23 @@ describe('Testing API all routes', () => {
     })
 
     //Login
-    // it('Pass, should get login token', (done) => {
-    //     request(app).post('/login')
-    //     .send({
-    //         email:'jemin@gmail',
-    //         password:'jemin123',           
+    it('Pass, should get login token', (done) => {
+        request(app).post('/login')
+        .send({
+            email:'raju@gmail.com',
+            password:'raju123',           
 
-    //     })
-    //         .then((res) => {
-    //             expect(res.statusCode).to.equal(500)
-    //             // expect(res.body).to.contain.property('token');
-    //             expect(res.body).to.contain.property('status', 'User not found!', 'token');
-    //             token = `Bearer ${res.body.token}`;
-    //             done();
-    //         })
-    //         .catch((err) => done(err));
-    // })
+        })
+            .then((res) => {
+                expect(res.statusCode).to.equal(200)
+                // expect(res.body).to.contain.property('token');
+                expect(res.body).to.contain.property('status', 'Login success!');
+                expect(res.body).to.contain.property('token');
+                token = `Bearer ${res.body.token}`;
+                done();
+            })
+            .catch((err) => done(err));
+    })
 
     it('Fail, sending empty email as login detail', (done) => {
         request(app).post('/signup').send({

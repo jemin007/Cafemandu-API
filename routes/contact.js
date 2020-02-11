@@ -24,7 +24,7 @@ description:req.body.description
 
 }).then(data=>{
  
-        res.json(data);
+        res.json({status: "Succesfully added", data:data});
     
 });
 });
