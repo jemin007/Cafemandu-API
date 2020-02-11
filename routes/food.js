@@ -23,7 +23,7 @@ router.route("/foods")
     image:req.body.image
     }).then(data=>{
      
-            res.json(data);
+            res.json({status: "succesfully uploaded", data:data});
         
     });
     });
