@@ -1,7 +1,10 @@
-const require = ('./auth.js');
-const express = ('express')
+const auth = require('../auth.js');
+const express = require('express');
+const Order = require('../Model/order.js');
 
-router.route("/order/")
+const router = express.Router();
+
+router.route("/order")
     .post(auth.verifyUser, async (req, res) => {
         const {
             foodName,
@@ -48,3 +51,5 @@ router.route("/order/")
             });
         }
     })
+
+    module.exports = router;
