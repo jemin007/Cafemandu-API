@@ -6,6 +6,7 @@ const foodRouter = require('./routes/food');
 const userRouter = require('./routes/user');
 const contactRouter= require('./routes/contact');
 const orderRouter= require('./routes/order');
+const searchRouter= require('./routes/search');
 const connection = require('./connection/dbTest');
 const cors = require('cors');
 //swagger
@@ -65,6 +66,7 @@ app.use('/', foodRouter);
 app.use('/', userRouter);
 app.use('/', contactRouter);
 app.use('/', orderRouter);
+app.use('/', searchRouter);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
