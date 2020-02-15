@@ -1,6 +1,8 @@
 const express = require('express');
 const Foods = require('../Model/Food');
+const cors = require('cors');
 const router = express.Router();
+
 
 router.route("/foods")
     .get(function (req, res) {
@@ -67,6 +69,20 @@ router.route("/foods")
       }
     );
   });
+
+  router.get('/searchfood/:search', cors(), (req, res, next) => {
+    let searchText = req.params.search;
+    Foods.find({
+                name: searchText
+            
+        })
+        .then((food) => {
+            res.status(200);
+            res.json(food);
+        })
+        .catch(next);
+});
+
 
   //swagger test
   /**

@@ -9,4 +9,5 @@ const foodSchema = {
     image: String
 };
 
+
 module.exports = mongoose.model("Food", foodSchema);
